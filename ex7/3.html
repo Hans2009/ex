@@ -1,0 +1,1895 @@
+
+<!doctype html> 
+
+
+
+
+<HTML>
+<HEAD>
+<link rel="stylesheet" type="text/css" href="http://w3.ibm.com/common/v6/css/w3_common.css" />
+<link rel="stylesheet" type="text/css" href="/OssWeb/css/Master.css" />
+<link rel="stylesheet" type="text/css" href="/OssWeb/css/onestopshop.css"/>
+<link rel="stylesheet" type="text/css" href="/OssWeb/css/demo_page.css"/>
+<link rel="stylesheet" type="text/css" href="/OssWeb/css/demo_table_jui.css"/>
+<link rel="stylesheet" type="text/css" href="/OssWeb/css/smoothness/jquery-ui-1.10.3.custom.min.css" />
+<link rel="stylesheet" type="text/css" href="/OssWeb/css/chosen/chosen.css" />
+<link rel="stylesheet" type="text/css" href="/OssWeb/css/facestypeahead-0.4.1.css">
+<link rel="stylesheet" type="text/css" href="/OssWeb/css/TableTools_JUI.css">
+
+<script src="/OssWeb/js/jquery/1.9.1/jquery-1.9.1.js"></script>
+<script src="/OssWeb/js/jquery-ui/1.10.3/jquery-ui-1.10.3.custom.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="/OssWeb/jsp/onestopshop.js"></script>
+<script type="text/javascript" language="javascript" src="/OssWeb/js/plugins/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="/OssWeb/js/plugins/faces/facestypeahead-0.4.1.js"></script>
+<script type="text/javascript" language="javascript" src="/OssWeb/js/TableTools.min.js"></script>
+<script type="text/javascript" language="javascript" src="/OssWeb/js/plugins/json2.js"></script>
+<script type="text/javascript" language="javascript" src="/OssWeb/js/tools/Date.js"></script>
+<script type="text/javascript" language="javascript" src="/OssWeb/js/tools/autoCompleteCombobox.js"></script>
+<script type="text/javascript" src="/OssWeb/js/plugins/createScrollableTable.js"></script>
+<script type="text/javascript" src="/OssWeb/js/plugins/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="/OssWeb/js/plugins/expand.js"></script>
+<script type="text/javascript" src="/OssWeb/js/plugins/waitUntilExists.js"></script>
+<script src="/OssWeb/js/plugins/chosen/chosen.jquery.js"></script>
+<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+
+
+<style type="text/css">
+
+
+
+
+
+body {
+	background:#fff url("/OssWeb/images/testsBodyBg.gif") repeat-x top left;
+
+}
+</style>
+<META http-equiv="Content-Style-Type" content="text/css">
+<TITLE>
+	One Stop Shop
+</TITLE>
+<!-- Style Sheets for jquery 
+	<link type="text/css" href="css/jquery-oneui/jquery-ui-1.8.18.custom.css" rel="stylesheet" />
+	-->	
+<!-- 		<link rel="stylesheet" type="text/css" href="css/ui.dropdownchecklist.themeroller.css"> -->
+		<link type="text/css" href="css/createScrollableTable.css" rel="stylesheet" />
+			
+		<style>
+			.editSection p { margin: 4px; font-size:16px;
+			cursor:pointer; border:1px solid gray;}
+			.highlight { background:gray; }
+		</style>
+
+<!-- Necessary jquery files 
+		<script type="text/javascript" src="js/jquery-1.7.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.7.custom.min.js"></script> -->
+		
+<!-- Additional jquery UI Elements
+		<script src="js/ui/jquery.ui.core.js"></script>
+		<script src="js/ui/jquery.ui.widget.js"></script>
+		<script src="js/ui/jquery.ui.tabs.js"></script>
+		<script src="js/ui/jquery.ui.button.js"></script>
+		<script src="js/ui/jquery.ui.dialog.js"></script>
+		<script src="js/ui/jquery.ui.sortable.js"></script> -->
+		
+<!-- Additional Plugins to jquery -->
+		<script type="text/javascript" src="js/plugins/json2.js"></script>
+		<script type="text/javascript" src="js/plugins/createScrollableTable.js"></script>
+		<script type="text/javascript" src="js/plugins/ckeditor/ckeditor.js"></script>
+		<script type="text/javascript" src="js/plugins/ckeditor/adapters/jquery.js"></script>
+		<!-- <script type="text/javascript" src="js/plugins/createScrollableTable.js"></script> -->
+		
+		<script type="text/javascript" language="javascript" src="js/tools/autoCompleteCombobox.js"></script>
+
+<!-- Here are the OSS Objects we need -->
+		<script type="text/javascript" src="js/controllers/ReleaseController.js"></script>
+		<script type="text/javascript" src="js/services/ReleaseService.js"></script>
+		<script type="text/javascript" src="js/custom-plugins/PluginSystemList.js"></script>
+		
+		<script type="text/javascript" src="js/structures/DescriptorSection.js"></script>
+		<script type="text/javascript" src="js/structures/ExternalComp.js"></script>
+		<script type="text/javascript" src="js/structures/Milestone.js"></script>
+		<script type="text/javascript" src="js/structures/OssForm.js"></script>
+		<script type="text/javascript" src="js/structures/Release.js"></script>
+		<script type="text/javascript" src="js/structures/SystemGroup.js"></script>
+		<script type="text/javascript" src="js/structures/System.js"></script>
+		<script type="text/javascript" src="js/structures/Stack.js"></script>
+		<script type="text/javascript" src="js/structures/StackNote.js"></script>
+		<script type="text/javascript" src="js/structures/User.js"></script>
+
+<style>
+.fullthingy{
+width:960px;
+}
+.scrollable{
+overflow:auto;
+}
+.stackNav li a { padding: 1.5em 1em;}
+.stackNav .ui-state-active {background: #ffffff; border-top:4px solid #047BB0;}
+.stackNav {background: #ffffff;}
+
+</style>
+
+<!-- Start Open Web Analytics Tracker -->
+<script type="text/javascript">
+
+</script>
+<!-- End Open Web Analytics Code -->
+
+</HEAD>
+
+
+<body onload='viewFirstTab()' class="claro" MARGINHEIGHT="0" MARGINWIDTH="0" LEFTMARGIN="0"
+	TOPMARGIN="0">
+
+
+	<TABLE cellpadding="0" cellspacing="0" border="0">
+		<TR>
+            <TD COLSPAN="3" VALIGN="top" ALIGN="left">
+				<TABLE WIDTH="100%" CELLPADDING="0" CELLSPACING="0" BORDER="0">
+            		
+
+
+
+<TR >
+        <TD width="185" align="center"><IMG SRC="images/oss.gif"
+                BORDER="0" ALT="Build Lab" /></TD>
+        <TD WIDTH="*" BGCOLOR="#999999"><SPAN CLASS="site-title"><B><FONT
+                size="4" color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;One Stop Shop 5.00</FONT></B></SPAN></TD>
+
+               <!-- Git Tag:          2017-10-19_prod_based_on_2017_05_01_prod, Official build -->
+               <!-- Time of extract:  Thu Oct 19 18:41:54 2017                -->
+
+</TR>
+
+
+            	</TABLE>
+            </TD>
+			<TD VALIGN="top" WIDTH="3%" ROWSPAN="2" BGCOLOR="#999999">
+				<table width="100%" cellpadding="0" cellspacing="0" border="0">
+			<tr>
+				<td bgcolor="#999999"></td>
+			</tr>
+			<tr> 
+				<td align="center" bgcolor="#999999"></td>
+			</tr>
+			<tr>
+				<td bgcolor="#999999"></td>
+			</tr>
+</table> 	
+			</TD>
+		</TR>
+		<TR ALIGN="left">
+        	<TD VALIGN="top" WIDTH="10%" HEIGHT="600">
+				
+
+
+<table width="185" cellpadding="0" cellspacing="0" border="0" bgcolor="#6666ff">
+	
+	<!--BEGIN SITE NAV-->
+	<tr bgcolor="#6666ff">
+		<TD bgcolor="#6666ff" colspan="5">&nbsp;</TD>
+	</tr>
+	<!--END SITE NAV-->
+</table>
+
+
+														
+
+
+
+<table width="185" cellpadding="0" cellspacing="0" border="0" bgcolor="#6666ff">
+	<tr>  
+		<td><span class="nav">&nbsp;</span></td>
+		<td colspan="3" height="21"><span class="nav"><a href="/OssWeb/LogonUserActionEJB.do?goto=success" class="oss_nav">OSS Home</a></span></td>
+		<td><span class="nav">&nbsp;</span></td>
+	</tr>
+
+	<tr>
+		<td><span class="nav">&nbsp;</span></td>
+		<td colspan="3" height="21"><span class="nav"><a href="/OssWeb/MyFormSearchAction.do" class="oss_nav">My Forms</a></span></td>
+		<td><span class="nav">&nbsp;</span></td>
+	</tr>
+	
+	<tr>
+		<td><span class="nav">&nbsp;</span></td>
+		<td colspan="3" height="21"><span class="nav"><a href="/OssWeb/OssFormCreateGeneralDisplay.do" class="oss_nav">Create a Form</a></span></td>
+		<td><span class="nav">&nbsp;</span></td>
+	</tr>
+	
+	<tr>  
+		
+	</tr>
+
+<tr>  
+		<td><span class="nav">&nbsp;</span></td> 													
+		<td colspan="3" height="21"><span ><a href="/OssWeb/newSearch.do" class="oss_nav" title="search forms">Search Forms</a><button id="newFormSearchHelpButton" style="cursor:pointer; float: right;margin-left: 0px" class="ui-state-default ui-corner-all ui-icon ui-icon-help" title="form search help"></button><span title="How to search forms..." id="newFormSearchHelpContainer"></span></span></td>
+		<td><span class="nav">&nbsp;</span>
+	</tr>
+		<tr>
+			<td><span class="nav">&nbsp;</span></td>
+			<td colspan="3" height="21"><span class="nav">
+										<a href="/OssWeb/LogonBuildlab.do" class="oss_nav">Build Tool</a>
+										</span></td>
+			<td><span class="nav">&nbsp;</span></td>
+		</tr>
+		<tr>
+			<td><span class="nav">&nbsp;</span></td>
+			<td colspan="3" height="21"><span class="nav">
+										<a href="/OssWeb/Fod.do" class="oss_nav">FoD Key Generation</a>
+										</span></td>
+			<td><span class="nav">&nbsp;</span></td>
+		</tr>		
+	<!-- 	<tr>
+			<td><span class="nav">&nbsp;</span></td>
+			<td colspan="3" height="21"><span class="nav">
+										<a href="/OssWeb/Release.do" class="oss_nav">Release Admin</a><sup>  beta</sup>
+										</span></td>
+			<td><span class="nav">&nbsp;</span></td>
+		</tr>
+		 
+		<tr>
+			<td><span class="nav">&nbsp;</span></td>
+			<td colspan="3" height="21"><span class="nav">
+										<a href="/OssWeb/DashboardAction.do" class="oss_nav">RSM Dashboard</a>
+										</span></td>
+			<td><span class="nav">&nbsp;</span></td>
+		</tr>	
+		 	
+			<tr>
+				<td><span class="nav">&nbsp;</span></td>
+				<td colspan="3" height="21"><span class="nav">
+											<a href="http://onestop.raleigh.ibm.com/Tutorial/index.htm"  class="oss_nav">Build Help</a>
+											</span></td>
+				<td><span class="nav">&nbsp;</span></td>
+			</tr>
+		-->	
+	<tr>
+		<td><span class="nav">&nbsp;</span></td>
+		<td colspan="3" height="21">
+			<span class="nav">
+				<a href="http://onestop.raleigh.ibm.com/Tutorial/index.htm" class="oss_nav">Help/Tutorials</a>
+			</span></td>
+		<td><span class="nav">&nbsp;</span></td>
+	</tr> 
+	<tr>
+		<td><span class="nav">&nbsp;</span></td>
+		<td colspan="3" height="21"><span class="nav"><a href="/OssWeb/EditUserProfileAction.do" class="oss_nav">View/Edit My Profile</a></span></td>
+		<td><span class="nav">&nbsp;</span></td>
+	</tr>
+	<tr>
+		<td><span class="nav">&nbsp;</span></td>
+		<td colspan="3" height="21"><span class="nav"><a href="/OssWeb/RedRequestNewPw.do" class="oss_nav">Change OSS Password</a></span></td>
+		<td><span class="nav">&nbsp;</span></td>
+	</tr> 
+	<tr>
+			
+				<td><span class="nav">&nbsp;</span></td>
+				<td colspan="3" height="21"><span class="nav"><a href="/OssWeb/jsp/logoff.jsp" class="oss_nav">Log Off</a></span></td>
+				<td><span class="nav">&nbsp;</span></td>
+			 
+	</tr>
+	
+	<tr>
+		<td><span class="nav">&nbsp;</span></td>
+			<td colspan="3" height="21">
+				<span class="nav">
+				
+				</span>
+			</td>
+		<td><span class="nav">&nbsp;</span></td>
+	</tr> 
+</table>
+        	</TD>
+        	<TD VALIGN="top" WIDTH="3%" HEIGHT="600">
+				
+        	</TD>
+        	<TD WIDTH="85%" VALIGN="top"><BR>
+        	    <TABLE cellpadding="0" cellspacing="0" border="0">
+        	    <TR>
+        	    <TD height="30"></TD>
+        	    </TR>
+        	    <TR>
+        		<TD>
+
+
+
+
+
+
+
+
+
+
+
+<div id="ossForm" style="position: relative; width: 1000px; z-index: 0; left: 0px; top: 20px; visibility: visible;">
+<div id="control" style="position: absolute; width: 948px; height: 51px; z-index: 0; left: 0px; top: -57px; border: 1px none rgb(0, 0, 0); visibility: visible;">
+  <table width="1035"  border="0">
+    <colgroup span="1" width="100"></colgroup>
+    <colgroup span="1" width=""></colgroup>
+    <colgroup span="6" width="100"></colgroup>	
+	<tr>
+      <td>
+		<form name="OneActionForm" method="post" action="/OssWeb/CopyOssForm.do"><input name="Copy" value="Copy Form" type="submit" class="oss-button-long"/></form>
+	  </td>
+      <td>&nbsp;</td>
+      
+      
+      <td valign="top"> 
+      		 
+      			
+      			<input name="Certify" value="Certify Test Exit" type="submit" class="oss-button-long" onclick="unHideLayer('confirmEL')"/>
+				
+				
+			
+			
+		</td>
+      
+	  
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	  
+      <td valign="top">
+      	
+      	
+		
+					
+						<input name="Submit" value="Submit for GA" type="submit" class="oss-button-long" onclick="unHideLayer('noGA')"/>
+					
+					
+		
+      </td>
+      <td valign="top">
+      
+      	<input name="Broadcast BVT" value="Broadcast BVT" type="submit" class="oss-button-long" onclick="addComments()"/>
+      
+      </td>
+      <td valign="top">
+      	
+      	    
+      		    <form name="OneActionForm" method="post" action="/OssWeb/DisplayBetaReleaseAction.do"><input name="BetaSubmit" value="Submit for Beta Release" type="submit" class="oss-button-extra-long" /> </form>
+      		
+             
+        
+	  </td>
+    </tr>
+        
+        <tr>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>
+	    <td valign="top">&nbsp;</td>
+	    <td>&nbsp;</td>
+	    <td>&nbsp;</td>	  	
+	    <td valign="top">&nbsp;</td>
+	    <td valign="top"></td>
+	    </tr>   
+    
+    
+    
+  </table>
+</div>
+<div id="Header" style="position: absolute; width: 1000px; z-index: 0; left: 0px; top: -22px; border: 1px none rgb(0, 0, 0); visibility: visible;">
+  <table id="httpUnitHeaderTable" width="100%" border="0">
+    <tr>
+      <td id="httpUnitCellwithMappedFormId" class="oss-bold" nowrap align="left">
+       <a title="uxsp:false">&nbsp;</a> Form  87437<a title="User Created">&nbsp;</a>
+      </td>
+      	  <td align="right">
+			
+
+
+
+      	  
+      	  </td>
+      <!-- <td nowrap class="oss-bold">
+
+        IBM Flash BIOS Update
+
+      </td>-->
+    </tr>
+    <tr>
+      <td colspan="3"><div align="left">
+      <table align="left" border="0">
+           <tr class="body-text-small"><td nowrap="nowrap" align="left" ><span class="scorecard2-headline">Created by</span></td><td nowrap="nowrap" align="left">Brian Bothwell5</td></tr>
+           <tr class="body-text-small">
+             <td nowrap="nowrap" align="left" ><span class="scorecard2-headline">Creation date</span></td>
+             <td nowrap="nowrap" align="left">2017-09-19</td>
+           </tr>
+		   <tr class="body-text-small"><td nowrap="nowrap" align="left" ><span class="scorecard2-headline">OSS Form State</span></td>
+		   <td nowrap="nowrap" align="left">BVT</td>
+			</tr>
+			<tr class="body-text-small"><td nowrap="nowrap" align="left" ><span class="scorecard2-headline">OSS Form Status</span></td>
+				<td nowrap="nowrap" align="left">
+					
+				</td>
+				<td></td>
+			</tr>
+		</table>
+        <p>&nbsp;</p>
+      </div></td>
+    </tr>
+  </table>
+</div>
+
+<div id="firstTab" style="position:absolute; width:1000px; z-index:3; left:0px; top: 135px; "  >
+  <table bgcolor="#eaeaea" border="0" cellpadding="3" cellspacing="1">							
+    <tr>
+	    <td class="tab_selected">&nbsp;&nbsp;<a onclick="viewFirstTab()">General &nbsp;&nbsp;</a></td>
+      	<td class="tab_not_selected">&nbsp;&nbsp;<a onclick="viewSecondTab()">Attachments</a>&nbsp;&nbsp;</td>
+	  	<td class="tab_not_selected">&nbsp;&nbsp;<a onclick="viewThirdTab()">Modifications</a>&nbsp;&nbsp;</td>
+
+    </tr>
+  </table>
+  <table width="1000" class="oss-menubar">														
+    <tr><td colspan="3"><br></td></tr>
+    <tr><td rowspan="2">&nbsp;&nbsp;</td>
+    	<td>																					
+	    	<form name="SaveActionForm" method="post" action="/OssWeb/SaveFields.do">
+		<table width="100%" border="0">
+  
+    <tr>
+    <td colspan="2" class="legend_heading">Description:  </td>
+    <td width="46%" colspan="2" class="legend_heading">Comments:</td>
+  </tr>
+  <tr>
+  	<td colspan="2">
+
+			
+    		<input name="description" type="text" value='Intel Omni-Path (OPA) Host Fabric Interface (HFI) Software ' size="75" maxlength="512"/>
+    		<span class="form_error">
+		
+		    		
+    </td>
+    <td colspan="2" rowspan="5"><textarea style="resize:none;" name="comments" cols="45" rows="8" wrap="PHYSICAL" id="textarea">10.6.0.0.112 - Second beta release
+
+Includes fix to adapter code for Intel Tech 
+Advisory TA0023. Switch FW containing same 
+fix will be available as soon as signing is 
+complete.</textarea></td>
+  </tr>
+  <tr>
+    <td width="43%" class="legend_heading">Category:<a title="3"></a></td>
+    <td width="11%" class="legend_heading">Version:</td>
+    </tr>
+  <tr>
+    <td>
+    		
+		
+		<select name="category"><option value="45">ASR Driver</option>
+<option value="2">Audio</option>
+<option value="3">BIOS</option>
+<option value="33">BIOS - Virtual Floppy</option>
+<option value="43">BMC/H8</option>
+<option value="219">BOMC</option>
+<option value="59">cKVM Firmware</option>
+<option value="27">C2T</option>
+<option value="4">CD ROM / DVD</option>
+<option value="53">CEC Firmware</option>
+<option value="31">CHIPSET-INF</option>
+<option value="5">Clustering</option>
+<option value="68">CMM</option>
+<option value="221">CNOS or CNOS Firmware</option>
+<option value="6">Configuration</option>
+<option value="64">Converged Network Adapter</option>
+<option value="67">CSVS</option>
+<option value="7">Diagnostics</option>
+<option value="56">Director Agent</option>
+<option value="57">Director Core Services</option>
+<option value="58">Director Extension</option>
+<option value="208">DRVLN</option>
+<option value="209">DRVWN</option>
+<option value="8">eFlash</option>
+<option value="63">Embedded Hypervisor</option>
+<option value="222">ENOS or ENOS Firmware</option>
+<option value="206">External Storage</option>
+<option value="9">Fibre</option>
+<option value="47">Firmware Update</option>
+<option value="205">Fix Pack</option>
+<option value="65">FPGA</option>
+<option value="10">Hard Disk Drive</option>
+<option value="28">HAL</option>
+<option value="11">Hot Plug</option>
+<option value="46">iSCSI</option>
+<option value="32">IDE BUS Master Drivers</option>
+<option value="37">IDE RAID</option>
+<option value="62">IMM</option>
+<option value="66">IMM2</option>
+<option value="70">IMMPBI</option>
+<option value="202">Indeterminate</option>
+<option value="12">Installation / Fixes</option>
+<option value="199">Integrated BMC</option>
+<option value="69">IOMC</option>
+<option value="201">Keyboard</option>
+<option value="210">LBV</option>
+<option value="212">LCP</option>
+<option value="60">Limited Release</option>
+<option value="218">LXCE</option>
+<option value="211">LXEM</option>
+<option value="207">LXPM</option>
+<option value="213">m2raid</option>
+<option value="204">memory-channel storage</option>
+<option value="214">mpt35sas</option>
+<option value="39">Management Module</option>
+<option value="52">Monitor</option>
+<option value="200">Mouse</option>
+<option value="38">MSI-Device Driver</option>
+<option value="215">nvmeswitch</option>
+<option value="13" selected="selected">Network</option>
+<option value="220">OneCLI</option>
+<option value="55">Options</option>
+<option value="44">OSA - Device Driver</option>
+<option value="54">OSA IMPI</option>
+<option value="14">Other</option>
+<option value="41">PLD code</option>
+<option value="15">Rack</option>
+<option value="29">Remote Update</option>
+<option value="17">ROM</option>
+<option value="1">RSA</option>
+<option value="36">RSA 2</option>
+<option value="216">sraidmr35</option>
+<option value="49">SAS</option>
+<option value="40">SATA</option>
+<option value="18">SCSI</option>
+<option value="16">ServeRAID</option>
+<option value="203">SISSAS</option>
+<option value="217">SMM</option>
+<option value="35">SP Driver</option>
+<option value="42">SP Newisys</option>
+<option value="34">SP Virtual Floppy</option>
+<option value="20">SSA</option>
+<option value="51">Standalone Solutions Configuration Tool</option>
+<option value="21">Switches</option>
+<option value="50">System Upgrade Package</option>
+<option value="22">Systems Management</option>
+<option value="23">Tape</option>
+<option value="61">UEFI</option>
+<option value="24">Update Xpress</option>
+<option value="25">Utility</option>
+<option value="26">Video</option>
+<option value="71">XCC</option></select>    		
+	
+	
+	
+	</td>
+    <td>
+		 
+	    	<input name="version" type="text" id="version" value='10.6.0.0.112' size="15"/>
+	    	<span class="form_error">
+		
+		
+    </td>
+  </tr>
+  <tr>
+    
+    <td class="legend_heading">Severity:<a title="3"></a></td>
+	<td class="legend_heading">GA Date:<br><span class="body-text-small">yyyy-mm-dd</span></td>
+  </tr>
+  <tr>
+    	
+	<td>
+		<select name="severity"><option value="1">Critical</option>
+<option value="0">Initial Release</option>
+<option value="3">NonCritical</option>
+<option value="2" selected="selected">Suggested</option></select>
+ 	</td>
+  	<td><input  name="gaDate" type="text" id="gaDate2" value='' size="10" maxlength="10">
+              <span class="form_error"></span></td>
+  </tr>
+
+
+
+</table>
+        <p>&nbsp;</p>
+        <div id="ForTheSaveButton" style="position:absolute; width:131px; height:37px; z-index:1; top: 39px; left: 881px; visibility: inherit;">
+          
+          <input name="Submit" type="submit" class="oss-button" value="Save">
+        </div>
+
+
+	    	</form>
+    	</td>
+    	<td rowspan="2">&nbsp;&nbsp;</td></tr>
+    
+  </table>
+  <br /><br /><span class="form_error"></span>
+</div>
+
+
+<div id="secondTab" style="position:absolute; width:1000px; z-index:2; left:0px; top: 135px; height: 540px;" >
+  <table  bgcolor="#eaeaea" border="0" cellpadding="3" cellspacing="1">
+    <tr>
+	    <td class="tab_not_selected">&nbsp;&nbsp;<a onclick="viewFirstTab()">General &nbsp;&nbsp;</a></td>
+      	<td class="tab_selected">&nbsp;&nbsp;<a onclick="viewSecondTab()">Attachments</a>&nbsp;&nbsp;</td>
+	  	<td class="tab_not_selected">&nbsp;&nbsp;<a onclick="viewThirdTab()">Modifications</a>&nbsp;&nbsp;</td>
+    </tr>
+  </table><table  width="1000" class="oss-menubar">
+    <tr>
+      <td colspan="3"><br/></td>
+    </tr>
+    <tr>
+      <td align="center">
+ 	<table width="80%"  border="0">
+        <tr>
+          <td align="right" ><span class="scorecard2-headline">1 section(s), 7 file(s)</span></td>
+        </tr>
+        <tr>
+          <td align="right" ><font color=#ff0000></font></td>
+        </tr>
+      </table>
+	 
+
+ 	<form name="OneActionForm" method="post" action="/OssWeb/SendBuildVerificationTestNotification.do" >				
+ 	<table width="80%"  border="0"><tr><td align="right" ><button name="rejectionReason" onclick="gaSystems(this)" class="oss-button">Save</button></td></tr></table>												
+ 	
+
+ 	<table width="80%"  border="1" cellpadding="0" cellspacing="0" bordercolor="#9999FF">
+     	<tr>
+          	<td width="60%" align="center">
+<p>&nbsp;</p>
+			
+ 	
+						
+			
+
+			    
+
+
+
+             
+             
+             
+
+
+ 
+<table width="90%"  border="0" align="center">
+<tr >
+<td align="center">
+		
+			
+				<table width="100%" border="1" align="center" cellpadding="0" cellspacing="1">
+                    
+                    <tr>
+                        <td class="oss-w" colspan="100%" align="center">System Support Matrix</td>
+                    </tr>
+                    <tr>
+	                  
+                      
+                      <td  class="oss-w" bgcolor="#9999FF">Codename</td> 
+                      <td  class="oss-w" bgcolor="#9999FF">Family</td>
+                      <td  class="oss-w" bgcolor="#9999FF">Machine Type(s)</td>
+                     
+                      
+					  	<td  class="oss-w" bgcolor="#9999FF" >RHEL 7</td>
+					  
+					  	<td  class="oss-w" bgcolor="#9999FF" >SLES 12</td>
+					  
+ 	                 	<td  class="oss-w" bgcolor="#9999FF"><input type="checkbox" name="chkall" onClick="checkAll(this)"> Systems In XML/TML</td>	 
+ 	                 </tr>
+					
+					
+ 					
+                    <tr class="oss-tbody">
+                      	 
+                      	<td class="body-text-small"  >Cable</td>
+                      	<td class="body-text-small"  >Lenovo ThinkSystem SR630 Server</td>
+                      	<td class="body-text-small"  >7X01,7X02</td>	
+						
+	                  		<td class="body-text-small"  nowrap>x86-64<br/></td> 
+							
+						
+	                  		<td class="body-text-small"  nowrap>x86-64<br/></td> 
+							
+						
+																						 
+                      	 	
+                      	 	<td class="body-text-small"   >
+                      	 		
+                      	 			
+	 	                      	 <input    type="checkbox" name="selectedCodeNamesGA" value='343777-819' checked     >
+                      	 		
+                      	 		
+                      	 	</td>
+                      	 	
+                      	 																					 
+<script language="JavaScript1.2">
+	function gaSystems(button) 
+	{
+		button.value='processSystemsGA';
+		//alert(button.value);
+		
+	}
+function checkAll(source) 
+{
+	checkboxes = document.getElementsByName('selectedCodeNamesGA');
+    for (i = 0; i < checkboxes.length; i++)
+	{
+		if (source.checked)
+			checkboxes[i].checked = source.checked;
+		else 
+		{
+			if (checkboxes[i].className!='GA')
+				checkboxes[i].checked = source.checked;
+		}
+	}
+}
+function warningUncheck(box)
+{ 
+	if (!box.checked)
+		{
+			var proceed=confirm("This system has been GAded in previous releases of this fix. Click OK to confirm that you want to REMOVE it from any future General Anouncements. Click CANCEL to keep the system as supported.");
+			if (!proceed)
+				box.checked=true;			
+		}
+}		
+function blockUncheck(box)
+{ 
+	if (!box.checked)
+		{
+			//Example how to display tags' value: alert(document.OneActionForm.rejectionReason.value);
+			alert("This system has been GAded in previous releases of this fix. REMOVAL IS NOT ALLOWED.");
+			box.checked=true;
+		}
+}		
+			    					
+	
+</script>
+
+						
+                    </tr>
+             		
+                    <tr class="oss-tbody">
+                      	 
+                      	<td class="body-text-small"  >Carnage</td>
+                      	<td class="body-text-small"  >Lenovo ThinkSystem SR550 Server</td>
+                      	<td class="body-text-small"  >7X03,7X04</td>	
+						
+	                  		<td class="body-text-small"  nowrap>x86-64<br/></td> 
+							
+						
+	                  		<td class="body-text-small"  nowrap>x86-64<br/></td> 
+							
+						
+																						 
+                      	 	
+                      	 	<td class="body-text-small"   >
+                      	 		
+                      	 			
+	 	                      	 <input    type="checkbox" name="selectedCodeNamesGA" value='343777-822' checked     >
+                      	 		
+                      	 		
+                      	 	</td>
+                      	 	
+                      	 																					 
+<script language="JavaScript1.2">
+	function gaSystems(button) 
+	{
+		button.value='processSystemsGA';
+		//alert(button.value);
+		
+	}
+function checkAll(source) 
+{
+	checkboxes = document.getElementsByName('selectedCodeNamesGA');
+    for (i = 0; i < checkboxes.length; i++)
+	{
+		if (source.checked)
+			checkboxes[i].checked = source.checked;
+		else 
+		{
+			if (checkboxes[i].className!='GA')
+				checkboxes[i].checked = source.checked;
+		}
+	}
+}
+function warningUncheck(box)
+{ 
+	if (!box.checked)
+		{
+			var proceed=confirm("This system has been GAded in previous releases of this fix. Click OK to confirm that you want to REMOVE it from any future General Anouncements. Click CANCEL to keep the system as supported.");
+			if (!proceed)
+				box.checked=true;			
+		}
+}		
+function blockUncheck(box)
+{ 
+	if (!box.checked)
+		{
+			//Example how to display tags' value: alert(document.OneActionForm.rejectionReason.value);
+			alert("This system has been GAded in previous releases of this fix. REMOVAL IS NOT ALLOWED.");
+			box.checked=true;
+		}
+}		
+			    					
+	
+</script>
+
+						
+                    </tr>
+             		
+                    <tr class="oss-tbody">
+                      	 
+                      	<td class="body-text-small"  >Constantine</td>
+                      	<td class="body-text-small"  >Lenovo ThinkSystem SR530 Server</td>
+                      	<td class="body-text-small"  >7X07,7X08</td>	
+						
+	                  		<td class="body-text-small"  nowrap>x86-64<br/></td> 
+							
+						
+	                  		<td class="body-text-small"  nowrap>x86-64<br/></td> 
+							
+						
+																						 
+                      	 	
+                      	 	<td class="body-text-small"   >
+                      	 		
+                      	 			
+	 	                      	 <input    type="checkbox" name="selectedCodeNamesGA" value='343777-821' checked     >
+                      	 		
+                      	 		
+                      	 	</td>
+                      	 	
+                      	 																					 
+<script language="JavaScript1.2">
+	function gaSystems(button) 
+	{
+		button.value='processSystemsGA';
+		//alert(button.value);
+		
+	}
+function checkAll(source) 
+{
+	checkboxes = document.getElementsByName('selectedCodeNamesGA');
+    for (i = 0; i < checkboxes.length; i++)
+	{
+		if (source.checked)
+			checkboxes[i].checked = source.checked;
+		else 
+		{
+			if (checkboxes[i].className!='GA')
+				checkboxes[i].checked = source.checked;
+		}
+	}
+}
+function warningUncheck(box)
+{ 
+	if (!box.checked)
+		{
+			var proceed=confirm("This system has been GAded in previous releases of this fix. Click OK to confirm that you want to REMOVE it from any future General Anouncements. Click CANCEL to keep the system as supported.");
+			if (!proceed)
+				box.checked=true;			
+		}
+}		
+function blockUncheck(box)
+{ 
+	if (!box.checked)
+		{
+			//Example how to display tags' value: alert(document.OneActionForm.rejectionReason.value);
+			alert("This system has been GAded in previous releases of this fix. REMOVAL IS NOT ALLOWED.");
+			box.checked=true;
+		}
+}		
+			    					
+	
+</script>
+
+						
+                    </tr>
+             		
+                    <tr class="oss-tbody">
+                      	 
+                      	<td class="body-text-small"  >Cyborg</td>
+                      	<td class="body-text-small"  >Lenovo ThinkSystem SR650 Server</td>
+                      	<td class="body-text-small"  >7X05,7X06</td>	
+						
+	                  		<td class="body-text-small"  nowrap>x86-64<br/></td> 
+							
+						
+	                  		<td class="body-text-small"  nowrap>x86-64<br/></td> 
+							
+						
+																						 
+                      	 	
+                      	 	<td class="body-text-small"   >
+                      	 		
+                      	 			
+	 	                      	 <input    type="checkbox" name="selectedCodeNamesGA" value='343777-820' checked     >
+                      	 		
+                      	 		
+                      	 	</td>
+                      	 	
+                      	 																					 
+<script language="JavaScript1.2">
+	function gaSystems(button) 
+	{
+		button.value='processSystemsGA';
+		//alert(button.value);
+		
+	}
+function checkAll(source) 
+{
+	checkboxes = document.getElementsByName('selectedCodeNamesGA');
+    for (i = 0; i < checkboxes.length; i++)
+	{
+		if (source.checked)
+			checkboxes[i].checked = source.checked;
+		else 
+		{
+			if (checkboxes[i].className!='GA')
+				checkboxes[i].checked = source.checked;
+		}
+	}
+}
+function warningUncheck(box)
+{ 
+	if (!box.checked)
+		{
+			var proceed=confirm("This system has been GAded in previous releases of this fix. Click OK to confirm that you want to REMOVE it from any future General Anouncements. Click CANCEL to keep the system as supported.");
+			if (!proceed)
+				box.checked=true;			
+		}
+}		
+function blockUncheck(box)
+{ 
+	if (!box.checked)
+		{
+			//Example how to display tags' value: alert(document.OneActionForm.rejectionReason.value);
+			alert("This system has been GAded in previous releases of this fix. REMOVAL IS NOT ALLOWED.");
+			box.checked=true;
+		}
+}		
+			    					
+	
+</script>
+
+						
+                    </tr>
+             		
+                    <tr class="oss-tbody">
+                      	 
+                      	<td class="body-text-small"  >DaAn</td>
+                      	<td class="body-text-small"  >System x3550 M5</td>
+                      	<td class="body-text-small"  >5463</td>	
+						
+	                  		<td class="body-text-small"  nowrap>x86-64<br/></td> 
+							
+						
+	                  		<td class="body-text-small"  nowrap>x86-64<br/></td> 
+							
+						
+																						 
+                      	 	
+                      	 	<td class="body-text-small"   >
+                      	 		
+                      	 			
+	 	                      	 <input    type="checkbox" name="selectedCodeNamesGA" value='343777-633' checked     >
+                      	 		
+                      	 		
+                      	 	</td>
+                      	 	
+                      	 																					 
+<script language="JavaScript1.2">
+	function gaSystems(button) 
+	{
+		button.value='processSystemsGA';
+		//alert(button.value);
+		
+	}
+function checkAll(source) 
+{
+	checkboxes = document.getElementsByName('selectedCodeNamesGA');
+    for (i = 0; i < checkboxes.length; i++)
+	{
+		if (source.checked)
+			checkboxes[i].checked = source.checked;
+		else 
+		{
+			if (checkboxes[i].className!='GA')
+				checkboxes[i].checked = source.checked;
+		}
+	}
+}
+function warningUncheck(box)
+{ 
+	if (!box.checked)
+		{
+			var proceed=confirm("This system has been GAded in previous releases of this fix. Click OK to confirm that you want to REMOVE it from any future General Anouncements. Click CANCEL to keep the system as supported.");
+			if (!proceed)
+				box.checked=true;			
+		}
+}		
+function blockUncheck(box)
+{ 
+	if (!box.checked)
+		{
+			//Example how to display tags' value: alert(document.OneActionForm.rejectionReason.value);
+			alert("This system has been GAded in previous releases of this fix. REMOVAL IS NOT ALLOWED.");
+			box.checked=true;
+		}
+}		
+			    					
+	
+</script>
+
+						
+                    </tr>
+             		
+                    <tr class="oss-tbody">
+                      	 
+                      	<td class="body-text-small"  >DaAn_BR</td>
+                      	<td class="body-text-small"  >System x3550 M5</td>
+                      	<td class="body-text-small"  >8869</td>	
+						
+	                  		<td class="body-text-small"  nowrap>x86-64<br/></td> 
+							
+						
+	                  		<td class="body-text-small"  nowrap>x86-64<br/></td> 
+							
+						
+																						 
+                      	 	
+                      	 	<td class="body-text-small"   >
+                      	 		
+                      	 			
+	 	                      	 <input    type="checkbox" name="selectedCodeNamesGA" value='343777-811' checked     >
+                      	 		
+                      	 		
+                      	 	</td>
+                      	 	
+                      	 																					 
+<script language="JavaScript1.2">
+	function gaSystems(button) 
+	{
+		button.value='processSystemsGA';
+		//alert(button.value);
+		
+	}
+function checkAll(source) 
+{
+	checkboxes = document.getElementsByName('selectedCodeNamesGA');
+    for (i = 0; i < checkboxes.length; i++)
+	{
+		if (source.checked)
+			checkboxes[i].checked = source.checked;
+		else 
+		{
+			if (checkboxes[i].className!='GA')
+				checkboxes[i].checked = source.checked;
+		}
+	}
+}
+function warningUncheck(box)
+{ 
+	if (!box.checked)
+		{
+			var proceed=confirm("This system has been GAded in previous releases of this fix. Click OK to confirm that you want to REMOVE it from any future General Anouncements. Click CANCEL to keep the system as supported.");
+			if (!proceed)
+				box.checked=true;			
+		}
+}		
+function blockUncheck(box)
+{ 
+	if (!box.checked)
+		{
+			//Example how to display tags' value: alert(document.OneActionForm.rejectionReason.value);
+			alert("This system has been GAded in previous releases of this fix. REMOVAL IS NOT ALLOWED.");
+			box.checked=true;
+		}
+}		
+			    					
+	
+</script>
+
+						
+                    </tr>
+             		
+                    <tr class="oss-tbody">
+                      	 
+                      	<td class="body-text-small"  >Draco</td>
+                      	<td class="body-text-small"  >System x3850 X6 / x3950 X6</td>
+                      	<td class="body-text-small"  >6241</td>	
+						
+	                  		<td class="body-text-small"  nowrap>x86-64<br/></td> 
+							
+						
+	                  		<td class="body-text-small"  nowrap>x86-64<br/></td> 
+							
+						
+																						 
+                      	 	
+                      	 	<td class="body-text-small"   >
+                      	 		
+                      	 			
+	 	                      	 <input    type="checkbox" name="selectedCodeNamesGA" value='343777-804' checked     >
+                      	 		
+                      	 		
+                      	 	</td>
+                      	 	
+                      	 																					 
+<script language="JavaScript1.2">
+	function gaSystems(button) 
+	{
+		button.value='processSystemsGA';
+		//alert(button.value);
+		
+	}
+function checkAll(source) 
+{
+	checkboxes = document.getElementsByName('selectedCodeNamesGA');
+    for (i = 0; i < checkboxes.length; i++)
+	{
+		if (source.checked)
+			checkboxes[i].checked = source.checked;
+		else 
+		{
+			if (checkboxes[i].className!='GA')
+				checkboxes[i].checked = source.checked;
+		}
+	}
+}
+function warningUncheck(box)
+{ 
+	if (!box.checked)
+		{
+			var proceed=confirm("This system has been GAded in previous releases of this fix. Click OK to confirm that you want to REMOVE it from any future General Anouncements. Click CANCEL to keep the system as supported.");
+			if (!proceed)
+				box.checked=true;			
+		}
+}		
+function blockUncheck(box)
+{ 
+	if (!box.checked)
+		{
+			//Example how to display tags' value: alert(document.OneActionForm.rejectionReason.value);
+			alert("This system has been GAded in previous releases of this fix. REMOVAL IS NOT ALLOWED.");
+			box.checked=true;
+		}
+}		
+			    					
+	
+</script>
+
+						
+                    </tr>
+             		
+                    <tr class="oss-tbody">
+                      	 
+                      	<td class="body-text-small"  >OceanCat</td>
+                      	<td class="body-text-small"  >ThinkSystem SD650 DWC Dual Node Tray</td>
+                      	<td class="body-text-small"  >7X58</td>	
+						
+	                  		<td class="body-text-small"  nowrap>x86-64<br/></td> 
+							
+						
+	                  		<td class="body-text-small"  nowrap>x86-64<br/></td> 
+							
+						
+																						 
+                      	 	
+                      	 	<td class="body-text-small"   >
+                      	 		
+                      	 			
+	 	                      	 <input    type="checkbox" name="selectedCodeNamesGA" value='343777-855' checked     >
+                      	 		
+                      	 		
+                      	 	</td>
+                      	 	
+                      	 																					 
+<script language="JavaScript1.2">
+	function gaSystems(button) 
+	{
+		button.value='processSystemsGA';
+		//alert(button.value);
+		
+	}
+function checkAll(source) 
+{
+	checkboxes = document.getElementsByName('selectedCodeNamesGA');
+    for (i = 0; i < checkboxes.length; i++)
+	{
+		if (source.checked)
+			checkboxes[i].checked = source.checked;
+		else 
+		{
+			if (checkboxes[i].className!='GA')
+				checkboxes[i].checked = source.checked;
+		}
+	}
+}
+function warningUncheck(box)
+{ 
+	if (!box.checked)
+		{
+			var proceed=confirm("This system has been GAded in previous releases of this fix. Click OK to confirm that you want to REMOVE it from any future General Anouncements. Click CANCEL to keep the system as supported.");
+			if (!proceed)
+				box.checked=true;			
+		}
+}		
+function blockUncheck(box)
+{ 
+	if (!box.checked)
+		{
+			//Example how to display tags' value: alert(document.OneActionForm.rejectionReason.value);
+			alert("This system has been GAded in previous releases of this fix. REMOVAL IS NOT ALLOWED.");
+			box.checked=true;
+		}
+}		
+			    					
+	
+</script>
+
+						
+                    </tr>
+             		
+                    <tr class="oss-tbody">
+                      	 
+                      	<td class="body-text-small"  >Stark</td>
+                      	<td class="body-text-small"  >Lenovo ThinkSystem SD530</td>
+                      	<td class="body-text-small"  >7X21</td>	
+						
+	                  		<td class="body-text-small"  nowrap>x86-64<br/></td> 
+							
+						
+	                  		<td class="body-text-small"  nowrap>x86-64<br/></td> 
+							
+						
+																						 
+                      	 	
+                      	 	<td class="body-text-small"   >
+                      	 		
+                      	 			
+	 	                      	 <input    type="checkbox" name="selectedCodeNamesGA" value='343777-828' checked     >
+                      	 		
+                      	 		
+                      	 	</td>
+                      	 	
+                      	 																					 
+<script language="JavaScript1.2">
+	function gaSystems(button) 
+	{
+		button.value='processSystemsGA';
+		//alert(button.value);
+		
+	}
+function checkAll(source) 
+{
+	checkboxes = document.getElementsByName('selectedCodeNamesGA');
+    for (i = 0; i < checkboxes.length; i++)
+	{
+		if (source.checked)
+			checkboxes[i].checked = source.checked;
+		else 
+		{
+			if (checkboxes[i].className!='GA')
+				checkboxes[i].checked = source.checked;
+		}
+	}
+}
+function warningUncheck(box)
+{ 
+	if (!box.checked)
+		{
+			var proceed=confirm("This system has been GAded in previous releases of this fix. Click OK to confirm that you want to REMOVE it from any future General Anouncements. Click CANCEL to keep the system as supported.");
+			if (!proceed)
+				box.checked=true;			
+		}
+}		
+function blockUncheck(box)
+{ 
+	if (!box.checked)
+		{
+			//Example how to display tags' value: alert(document.OneActionForm.rejectionReason.value);
+			alert("This system has been GAded in previous releases of this fix. REMOVAL IS NOT ALLOWED.");
+			box.checked=true;
+		}
+}		
+			    					
+	
+</script>
+
+						
+                    </tr>
+             		
+                    <tr class="oss-tbody">
+                      	 
+                      	<td class="body-text-small"  >WilyKat</td>
+                      	<td class="body-text-small"  >NeXtScale nx360 M5</td>
+                      	<td class="body-text-small"  >5465</td>	
+						
+	                  		<td class="body-text-small"  nowrap>x86-64<br/></td> 
+							
+						
+	                  		<td class="body-text-small"  nowrap>x86-64<br/></td> 
+							
+						
+																						 
+                      	 	
+                      	 	<td class="body-text-small"   >
+                      	 		
+                      	 			
+	 	                      	 <input    type="checkbox" name="selectedCodeNamesGA" value='343777-743' checked     >
+                      	 		
+                      	 		
+                      	 	</td>
+                      	 	
+                      	 																					 
+<script language="JavaScript1.2">
+	function gaSystems(button) 
+	{
+		button.value='processSystemsGA';
+		//alert(button.value);
+		
+	}
+function checkAll(source) 
+{
+	checkboxes = document.getElementsByName('selectedCodeNamesGA');
+    for (i = 0; i < checkboxes.length; i++)
+	{
+		if (source.checked)
+			checkboxes[i].checked = source.checked;
+		else 
+		{
+			if (checkboxes[i].className!='GA')
+				checkboxes[i].checked = source.checked;
+		}
+	}
+}
+function warningUncheck(box)
+{ 
+	if (!box.checked)
+		{
+			var proceed=confirm("This system has been GAded in previous releases of this fix. Click OK to confirm that you want to REMOVE it from any future General Anouncements. Click CANCEL to keep the system as supported.");
+			if (!proceed)
+				box.checked=true;			
+		}
+}		
+function blockUncheck(box)
+{ 
+	if (!box.checked)
+		{
+			//Example how to display tags' value: alert(document.OneActionForm.rejectionReason.value);
+			alert("This system has been GAded in previous releases of this fix. REMOVAL IS NOT ALLOWED.");
+			box.checked=true;
+		}
+}		
+			    					
+	
+</script>
+
+						
+                    </tr>
+             		
+                    <tr class="oss-tbody">
+                      	 
+                      	<td class="body-text-small"  >WilyKat DWC</td>
+                      	<td class="body-text-small"  >NeXtScale nx360 M5 DWC</td>
+                      	<td class="body-text-small"  >5467</td>	
+						
+	                  		<td class="body-text-small"  nowrap>x86-64<br/></td> 
+							
+						
+	                  		<td class="body-text-small"  nowrap>x86-64<br/></td> 
+							
+						
+																						 
+                      	 	
+                      	 	<td class="body-text-small"   >
+                      	 		
+                      	 			
+	 	                      	 <input    type="checkbox" name="selectedCodeNamesGA" value='343777-790' checked     >
+                      	 		
+                      	 		
+                      	 	</td>
+                      	 	
+                      	 																					 
+<script language="JavaScript1.2">
+	function gaSystems(button) 
+	{
+		button.value='processSystemsGA';
+		//alert(button.value);
+		
+	}
+function checkAll(source) 
+{
+	checkboxes = document.getElementsByName('selectedCodeNamesGA');
+    for (i = 0; i < checkboxes.length; i++)
+	{
+		if (source.checked)
+			checkboxes[i].checked = source.checked;
+		else 
+		{
+			if (checkboxes[i].className!='GA')
+				checkboxes[i].checked = source.checked;
+		}
+	}
+}
+function warningUncheck(box)
+{ 
+	if (!box.checked)
+		{
+			var proceed=confirm("This system has been GAded in previous releases of this fix. Click OK to confirm that you want to REMOVE it from any future General Anouncements. Click CANCEL to keep the system as supported.");
+			if (!proceed)
+				box.checked=true;			
+		}
+}		
+function blockUncheck(box)
+{ 
+	if (!box.checked)
+		{
+			//Example how to display tags' value: alert(document.OneActionForm.rejectionReason.value);
+			alert("This system has been GAded in previous releases of this fix. REMOVAL IS NOT ALLOWED.");
+			box.checked=true;
+		}
+}		
+			    					
+	
+</script>
+
+						
+                    </tr>
+             		
+                    <tr class="oss-tbody">
+                      	 
+                      	<td class="body-text-small"  >XinYi</td>
+                      	<td class="body-text-small"  >System x3650 M5</td>
+                      	<td class="body-text-small"  >5462</td>	
+						
+	                  		<td class="body-text-small"  nowrap>x86-64<br/></td> 
+							
+						
+	                  		<td class="body-text-small"  nowrap>x86-64<br/></td> 
+							
+						
+																						 
+                      	 	
+                      	 	<td class="body-text-small"   >
+                      	 		
+                      	 			
+	 	                      	 <input    type="checkbox" name="selectedCodeNamesGA" value='343777-632' checked     >
+                      	 		
+                      	 		
+                      	 	</td>
+                      	 	
+                      	 																					 
+<script language="JavaScript1.2">
+	function gaSystems(button) 
+	{
+		button.value='processSystemsGA';
+		//alert(button.value);
+		
+	}
+function checkAll(source) 
+{
+	checkboxes = document.getElementsByName('selectedCodeNamesGA');
+    for (i = 0; i < checkboxes.length; i++)
+	{
+		if (source.checked)
+			checkboxes[i].checked = source.checked;
+		else 
+		{
+			if (checkboxes[i].className!='GA')
+				checkboxes[i].checked = source.checked;
+		}
+	}
+}
+function warningUncheck(box)
+{ 
+	if (!box.checked)
+		{
+			var proceed=confirm("This system has been GAded in previous releases of this fix. Click OK to confirm that you want to REMOVE it from any future General Anouncements. Click CANCEL to keep the system as supported.");
+			if (!proceed)
+				box.checked=true;			
+		}
+}		
+function blockUncheck(box)
+{ 
+	if (!box.checked)
+		{
+			//Example how to display tags' value: alert(document.OneActionForm.rejectionReason.value);
+			alert("This system has been GAded in previous releases of this fix. REMOVAL IS NOT ALLOWED.");
+			box.checked=true;
+		}
+}		
+			    					
+	
+</script>
+
+						
+                    </tr>
+             		
+                    <tr class="oss-tbody">
+                      	 
+                      	<td class="body-text-small"  >XinYi_BR</td>
+                      	<td class="body-text-small"  >System x3650 M5</td>
+                      	<td class="body-text-small"  >8871</td>	
+						
+	                  		<td class="body-text-small"  nowrap>x86-64<br/></td> 
+							
+						
+	                  		<td class="body-text-small"  nowrap>x86-64<br/></td> 
+							
+						
+																						 
+                      	 	
+                      	 	<td class="body-text-small"   >
+                      	 		
+                      	 			
+	 	                      	 <input    type="checkbox" name="selectedCodeNamesGA" value='343777-810' checked     >
+                      	 		
+                      	 		
+                      	 	</td>
+                      	 	
+                      	 																					 
+<script language="JavaScript1.2">
+	function gaSystems(button) 
+	{
+		button.value='processSystemsGA';
+		//alert(button.value);
+		
+	}
+function checkAll(source) 
+{
+	checkboxes = document.getElementsByName('selectedCodeNamesGA');
+    for (i = 0; i < checkboxes.length; i++)
+	{
+		if (source.checked)
+			checkboxes[i].checked = source.checked;
+		else 
+		{
+			if (checkboxes[i].className!='GA')
+				checkboxes[i].checked = source.checked;
+		}
+	}
+}
+function warningUncheck(box)
+{ 
+	if (!box.checked)
+		{
+			var proceed=confirm("This system has been GAded in previous releases of this fix. Click OK to confirm that you want to REMOVE it from any future General Anouncements. Click CANCEL to keep the system as supported.");
+			if (!proceed)
+				box.checked=true;			
+		}
+}		
+function blockUncheck(box)
+{ 
+	if (!box.checked)
+		{
+			//Example how to display tags' value: alert(document.OneActionForm.rejectionReason.value);
+			alert("This system has been GAded in previous releases of this fix. REMOVAL IS NOT ALLOWED.");
+			box.checked=true;
+		}
+}		
+			    					
+	
+</script>
+
+						
+                    </tr>
+             		
+				</table>        
+			
+						
+		
+		
+</td>
+</tr>
+</table>
+  
+ 	
+ 	
+	
+				<table width="90%" border="0" align="center">
+					
+						<tr ><td align="center">
+						
+							<a href='/OssWeb/OssFormCreateEditBundle.do?displayedFormId=87437&metaDataSectionId=343777&metaDataSectionResId=123108'/><img src="/OssWeb/images/EditButton.jpg" width="121" height="21"/></a>	
+ 						
+ 						
+ 						<a href='/OssWeb/OssFormDeleteSection.do?displayedFormId=87437&metaDataSectionId=343777&metaDataSectionResId=123108'/><img src="/OssWeb/images/DeleteSectionButton.jpg" width="121" height="21"/></a>	
+ 						
+ 						</td></tr>
+					
+					
+				</table>
+	             	
+ 
+ 
+     
+
+
+
+ 	<table width="90%" align="center" cellpadding="3" cellspacing="0" border="1">
+ 		<tr>
+ 			<td class="oss-w" bgcolor="#9999FF" align="center" colspan="3">Relationships</td>
+ 		</tr>
+ 		<tr>
+ 			<td class="oss-w" bgcolor="#9999FF">Relationship Type</td>
+ 			<td class="oss-w" bgcolor="#9999FF">Fix Id</td>
+ 		</tr> 
+
+ 		
+                    <tr class="oss-tbody">
+                      	<td class="body-text-small">Supersede</td>
+                      	<td class="body-text-small">No Supersede Specified</td>
+
+                    </tr>
+        
+
+ 	</table>
+
+<p>
+<p>
+ 	
+      
+    
+ 
+    <br>	
+
+ 	
+ 	
+ 
+ 
+ 
+             	<table width="100%" align="left" cellpadding="3" cellspacing="0"  border="1">
+                    <tr>
+                      <td class="oss-w" bgcolor="#9999FF" align="center" colspan="2">Payload (7)</td>
+                    </tr>
+                    
+						
+                    	<tr class="oss-tbody">
+                      		<td nowrap class="body-text-small"><a href='DownloadRepositoryFile.do?filename=IntelOPA-10.6.0.0.112-change_history.txt'>IntelOPA-10.6.0.0.112-change_history.txt</a></td>
+                      		
+							<td class="body-text-small">changelog</td>
+							
+							
+                    	</tr>
+             			
+                    	<tr class="oss-tbody">
+                      		<td nowrap class="body-text-small"><a href='DownloadRepositoryFile.do?filename=IntelOPA-10.6.0.0.112-readme.txt'>IntelOPA-10.6.0.0.112-readme.txt</a></td>
+                      		
+							<td class="body-text-small">readme</td>
+							
+							
+                    	</tr>
+             			
+                    	<tr class="oss-tbody">
+                      		<td nowrap class="body-text-small"><a href='DownloadRepositoryFile.do?filename=IntelOPA-IFS.RHEL73-x86_64.10.6.0.0.112.tgz'>IntelOPA-IFS.RHEL73-x86_64.10.6.0.0.112.tgz</a></td>
+                      		
+							<td class="body-text-small">RHEL7.3 Fix</td>
+							
+							
+                    	</tr>
+             			
+                    	<tr class="oss-tbody">
+                      		<td nowrap class="body-text-small"><a href='DownloadRepositoryFile.do?filename=IntelOPA-IFS.RHEL74-x86_64.10.6.0.0.112.tgz'>IntelOPA-IFS.RHEL74-x86_64.10.6.0.0.112.tgz</a></td>
+                      		
+							<td class="body-text-small">RHEL7.4 Fix</td>
+							
+							
+                    	</tr>
+             			
+                    	<tr class="oss-tbody">
+                      		<td nowrap class="body-text-small"><a href='DownloadRepositoryFile.do?filename=IntelOPA-IFS.SLES122-x86_64.10.6.0.0.112.tgz'>IntelOPA-IFS.SLES122-x86_64.10.6.0.0.112.tgz</a></td>
+                      		
+							<td class="body-text-small">SLES12 SP2 Fix</td>
+							
+							
+                    	</tr>
+             			
+                    	<tr class="oss-tbody">
+                      		<td nowrap class="body-text-small"><a href='DownloadRepositoryFile.do?filename=IntelOPA-IFS.SLES123-x86_64.10.6.0.0.112.tgz'>IntelOPA-IFS.SLES123-x86_64.10.6.0.0.112.tgz</a></td>
+                      		
+							<td class="body-text-small">SLES12 SP3 Fix</td>
+							
+							
+                    	</tr>
+             			
+                    	<tr class="oss-tbody">
+                      		<td nowrap class="body-text-small"><a href='DownloadRepositoryFile.do?filename=TBD.tml'>TBD.tml</a></td>
+                      		
+							<td class="body-text-small">OSS Generated TML</td>
+							
+							
+                    	</tr>
+             			
+             		
+         		</table>
+         	</td>
+     	</tr>
+ 	</table><br/><br/>
+ 												 
+ 	 	<div id="addCommentsPopUp" style="position: absolute; width: 800px; height: 37px; z-index: 1; top: -27px; left: 127px; border: 1px none rgb(0, 0, 0);visibility: hidden;">
+		
+ 	    <table width="100%"  border="0" bgcolor="#0000CC" id="margin">
+          <tr>
+            <td><table width="100%" bgcolor="#eeeeee" border="0">
+          <tbody><tr align="center">
+            <td>Additional Comments (that will be included in the subject of the BVT notification email):</td> 
+          </tr>
+          <tr>
+            <td align="center">
+              <input name="additionalComments" type="text" size="146" maxlength="146">            </td>
+          </tr>
+          <tr align="center">
+            <td><input name="Submit" class="oss-button-long" value="Broadcast BVT" type="submit"></td>
+          </tr>
+        </tbody></table>				
+			</td>
+          </tr>
+        </table>
+ 	    <p>&nbsp;</p>
+ 	</div>		
+		
+ 	</form>
+	
+    
+
+      </td>
+    </tr>
+<tr>
+	<td align="center"><form name="SingleCreateForm" method="post" action="/OssWeb/OssFormCreateAttachmentAddBundle.do?formId=87437"><input name="Add Section" value="Add Section" type="submit" class="oss-button-long"/></form></td>
+</tr>
+  </table>
+</div>
+  <div id="thirdTab" style="position: absolute; width: 1000px; z-index: 1; left: 0px; top: 135px;">
+	  <table bgcolor="#eaeaea" border="0" cellpadding="3" cellspacing="1">
+    	
+			<tr><td class="tab_not_selected">&nbsp;<a onclick="viewFirstTab()">General &nbsp;&nbsp;</a></td>
+			<td class="tab_not_selected">&nbsp;&nbsp;<a onclick="viewSecondTab()">Attachments</a>&nbsp;&nbsp;</td>
+			<td class="tab_selected">&nbsp;&nbsp;<a onclick="viewThirdTab()">Modifications</a>&nbsp;&nbsp;</td>
+    		</tr>
+  		
+  	  </table>
+  <table class="oss-menubar" width="1000" id="httpUnitModificationsTable">
+	<tr><td>&nbsp;</td></tr>
+	<tr><td align="center">29 changes</td></tr>
+
+	<tr align="center"><td>
+      <textarea name="textarea" cols="115" rows="15" readonly="readonly" wrap="off" class="oss-tbody">
+      09/19/2017 12:21 PM bbothwell5@lenovo.com OSSForm created, copied from 87308
+      09/19/2017 12:26 PM bbothwell5@lenovo.com updated comments
+      09/19/2017 12:26 PM bbothwell5@lenovo.com changed version
+      09/19/2017 12:29 PM bbothwell5@lenovo.com Attached binary file: IntelOPA-IFS.RHEL73-x86_64.10.6.0.0.112.tgz
+      09/19/2017 12:38 PM bbothwell5@lenovo.com Attached binary file: IntelOPA-IFS.RHEL74-x86_64.10.6.0.0.112.tgz
+      09/19/2017 12:40 PM bbothwell5@lenovo.com Attached binary file: IntelOPA-IFS.SLES122-x86_64.10.6.0.0.112.tgz
+      09/19/2017 12:42 PM bbothwell5@lenovo.com Attached binary file: IntelOPA-IFS.SLES123-x86_64.10.6.0.0.112.tgz
+      09/19/2017 01:07 PM bbothwell5@lenovo.com Attached change history file: IntelOPA-10.6.0.0.112-change_history.txt
+      09/19/2017 01:08 PM bbothwell5@lenovo.com update tml: Attached binary file: IntelOPA-IFS.RHEL73-x86_64.10.6.0.0.112.tgz Section 123108
+      09/19/2017 01:08 PM bbothwell5@lenovo.com update tml: Attached binary file: IntelOPA-IFS.RHEL74-x86_64.10.6.0.0.112.tgz Section 123108
+      09/19/2017 01:08 PM bbothwell5@lenovo.com update tml: Attached binary file: IntelOPA-IFS.SLES122-x86_64.10.6.0.0.112.tgz Section 123108
+      09/19/2017 01:08 PM bbothwell5@lenovo.com update tml: Attached binary file: IntelOPA-IFS.SLES123-x86_64.10.6.0.0.112.tgz Section 123108
+      09/19/2017 01:08 PM bbothwell5@lenovo.com Attached readme file: IntelOPA-10.6.0.0.112-readme.txt Section 123108
+      09/19/2017 01:08 PM bbothwell5@lenovo.com update tml: Attached change history file: IntelOPA-10.6.0.0.112-change_history.txt Section 123108
+      09/19/2017 01:08 PM osstickets@lenovo.com updated tml file TBD.tml for Section 123108
+      09/19/2017 01:08 PM bbothwell5@lenovo.com Checked system Cable as to be GAded.
+      09/19/2017 01:08 PM bbothwell5@lenovo.com Checked system Carnage as to be GAded.
+      09/19/2017 01:08 PM bbothwell5@lenovo.com Checked system Constantine as to be GAded.
+      09/19/2017 01:08 PM bbothwell5@lenovo.com Checked system Cyborg as to be GAded.
+      09/19/2017 01:08 PM bbothwell5@lenovo.com Checked system DaAn as to be GAded.
+      09/19/2017 01:08 PM bbothwell5@lenovo.com Checked system DaAn_BR as to be GAded.
+      09/19/2017 01:08 PM bbothwell5@lenovo.com Checked system Draco as to be GAded.
+      09/19/2017 01:08 PM bbothwell5@lenovo.com Checked system OceanCat as to be GAded.
+      09/19/2017 01:08 PM bbothwell5@lenovo.com Checked system Stark as to be GAded.
+      09/19/2017 01:08 PM bbothwell5@lenovo.com Checked system WilyKat as to be GAded.
+      09/19/2017 01:08 PM bbothwell5@lenovo.com Checked system WilyKat DWC as to be GAded.
+      09/19/2017 01:08 PM bbothwell5@lenovo.com Checked system XinYi as to be GAded.
+      09/19/2017 01:08 PM bbothwell5@lenovo.com Checked system XinYi_BR as to be GAded.
+      10/12/2017 08:45 AM bbothwell5@lenovo.com Copied this form into new form 87969</textarea>
+</td></tr>
+	<tr><td>&nbsp;</td></tr>
+  </table>
+<a title="lishuai6@lenovo.com">&nbsp;</a>
+ 
+	
+		<a title="77=OSS User">&nbsp;</a>
+	
+
+<a title="ACCESS CONTROL</br>You do not have enough privileges to access form 87437<br/><br/><ul><li>The form was created by Brian Bothwell5.</li><li>The form does NOT have BOSS project associated.</li></ul>">&nbsp;</a>
+</div>
+</div>		
+<script language="JavaScript1.2">
+	<!--
+	
+		function editBossCreatedSystemSupport(id,sectionid) {
+			var options  = "displayedFormId=" + id;
+			    options += "&metaDataSectionId=" + sectionid;
+			    
+			var parentWindow = window.open("/OssWeb/EditBossSystemSupportAction.do?"+options,"","status,,scrollbars=yes,height=600,width=800");
+		}
+
+	// -->		
+</script> 
+<div id="noGA" style="position:absolute; width:433px; height:134px; z-index:1; background-color: #FF0000; layer-background-color: #FF0000; border: 1px none #000000; left: 516px; top: 48px; visibility: hidden;">
+      <table width="100%" height="100%"  border="2" bordercolor="#FF0000" bgcolor="#CCCCCC" cellpadding="10">
+        <tr>
+          <td><img src="/OssWeb/images/stop_icon.png" height="36" border="0" width="38"> <span class="scorecard2-headline style1">This form has not been certified.</span>
+            <p>&nbsp;</p>
+              <p>This form can NOT be submitted for GA until it has been certified that it has exited test.</p>
+              <p>Use  the "Certify Test Exit" button to enable GA submission.</p>
+              <p align="center">              
+                <input name="Submit2" value="Ok" onclick="hideLayer('noGA')" type="submit"> 
+          </p>          </td></tr>
+      </table>
+</div>
+
+
+<div id="validation" style="position:absolute; width:433px; height:134px; z-index:1; background-color: #FF0000; layer-background-color: #FF0000; border: 1px none #000000; left: 516px; top: 48px; visibility: hidden;">
+      <table width="100%" height="100%"  border="2" bordercolor="#FF0000" bgcolor="#CCCCCC" cellpadding="10">
+        <tr>
+          <td><img src="/OssWeb/images/stop_icon.png" height="36" border="0" width="38"> <span class="scorecard2-headline style1"> Form Validation Error</span>
+            <p>&nbsp;</p>
+              <p>MISSING SUPERSEDE </br></br>If this is not the initial release of this code, please specify a supersede value in each section or change the severity to initial release.</p>
+              <p></br>Review the form, save it and try again.</br></p>
+              <p align="center">              
+                <input name="Submit3" value="Ok" onclick="hideLayer('validation')" type="submit"> 
+          </p>          </td></tr>
+      </table>
+</div>
+<div id="validationWARNING" style="position:absolute; width:433px; height:134px; z-index:1; background-color: #FF0000; layer-background-color: #FF0000; border: 1px none #000000; left: 586px; top: 48px; visibility: hidden;">
+      <table width="100%" height="100%"  border="2" bordercolor="#FFCC00" bgcolor="#CCCCCC" cellpadding="10">
+        <tr>
+          <td><img src="/OssWeb/images/black-yellow-warning-1-md.png" height="36" border="0" width="38"> <span class="scorecard2-headline style1"> Form Validation Warning</span>
+            <p>&nbsp;</p>
+              <p>MISSING SUPERSEDE </br></br>If this is not the initial release of this code, please specify a supersede value in each section or change the severity to initial release.</p>
+              <p></br>Click "Submit For GA" if you still want to proceed. The form could be rejected by the OSS Administrator. Click "Cancel" to stop here and review the form.</br></p>
+           </td>
+       </tr>
+       <tr><td><table width="100%">
+ 			<tr><td align="left" valign="top">
+ 			<input name="Submit3" value="Cancel" onclick="hideLayer('validationWARNING')" type="submit">
+ 			</td>
+ 			<td align="right">
+ 			<form name="OneActionForm" method="post" action="/OssWeb/SubmitOssForm.do"><input name="Submit" value="Submit for GA" type="submit" ></form>
+ 			</td></tr>      
+       </table></td></tr>
+      </table>
+</div>
+
+
+
+<div id="confirmEL" style="position: absolute; width: 520px; height: 330px; z-index: 1; background-color: #0033FF; border: 1px none rgb(0, 0, 0); left: 426px; top: 59px; visibility: hidden;">
+<table width="100%"  border="1" height="100%">
+<tr>
+<td>
+
+<table width="100%" height="100%" border="0" cellpadding="5" bordercolor="#CCCCCC" bgcolor="#CCCCCC">
+        <tr>
+          <td height="36" valign="middle"><div align="center"><span class="scorecard2-headline style1">TEST EXIT CERTIFICATION</span></div></td>
+          <td><div align="center"><img src="/OssWeb/images/ExitLetter.jpg" width="52" height="52"></div></td>
+        </tr>
+		<tr>
+		  <td colspan="2"><p>Please verify that:</p>
+		    
+		    <ul>
+			<li>This is the correct OSS form containing the fixes you intend to certify.</li>
+			<li>An exit letter has been provided for the fixes attached to this OSS form.</li>
+		      <li> The exit letter covers one or more systems that this OSS form lists as supported (Note: Exit letter certification is assumed for all other supported systems that have previously GA'd)
+. </li>
+		      
+		      </ul>
+			  <p>&nbsp;</p>
+			  <p>Click "Certify" below to certify that the attached fixes have exited test.</p></td>
+		</tr>
+		<tr><td><div align="center">
+		  <form name="OneActionForm" method="post" action="AddExitLetter.do"><input name="Endorse" value="Certify" type="submit"/></form>
+		  </div></td><td valign="top">		  <input type="submit" name="Submit3" value="Cancel" onClick="hideLayer('confirmEL')"></td>
+		</tr>
+      </table>
+
+
+</td>
+  </tr>
+</table>
+</div>
+
+
+		
+</TD>
+        		</TR>
+        		</TABLE>
+        	</TD>
+       	</TR>
+	</TABLE>
+</BODY>
+
+</HTML>

@@ -2,7 +2,10 @@ import urllib.request
 import urllib.parse
 #url = "http://bbs.chinaunix.net/member.php?mod=logging&action=login&loginsubmit=yes&loginhash=LBuCC"
 #url = "http://rsl-ossweb20.labs.lenovo.com:9084/OssWeb/OneStopShopRedLogin.do"
-url = "http://rsl-ossweb20.labs.lenovo.com:9084/OssWeb/html/SecureLogon.html"
+#url = "http://rsl-ossweb20.labs.lenovo.com:9084/OssWeb/html/SecureLogon.html"
+#url = "http://rsl-ossweb20.labs.lenovo.com:9084/OssWeb/j_security_check"
+url = "http://rsl-ossweb20.labs.lenovo.com:9084/OssWeb/RedLogon.do"
+
 postdata = urllib.parse.urlencode({
     "userId":"lishuai6@lenovo.com",
     "password":"ssss"
