@@ -1,10 +1,11 @@
 <html>
 <title>Login page</title>
-<head>This is Login page!</head>
+<head>This is Login page! '/account/templates/account/login.html'</head>
 <body>
 <h1>login</h1>
 <p>Input your username and password</p>
 <form class="form-horizontal" action="." method="post"> 
+{% csrf_token %} 
 <!-- {% csrf_token %} -->
     <p>
         <label for="id_username">Username:</label>
