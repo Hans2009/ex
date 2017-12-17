@@ -11,4 +11,6 @@ urlpatterns = [
     #url(r'^logout/$', auth_views.logout, name='user_logout'),
     #url(r'^logout/$', auth_views.logout, {"template_name": "account/logout.html"}, name='user_logout'),
     url(r'^logout/$', auth_views.logout, {"template_name": "account/logout.html"}, name='user_logout'),
+    #url(r'^register/$', auth_views.register,{"template_name": "account/register.html"}, name='user_register'),
+    url(r'^register/$', views.register, name='user_register'),
 ]
